@@ -65,7 +65,8 @@ $ dotnet run
 - [X] Sum points with the basic game structure
 - [X] Calculate strike and spare points
 - [X] Calculate extra throw
-- [ ] Describe and run test scenarios
+- [X] Describe and run test scenarios
+- [ ] Refactoring
 - [ ] Apply API to extend web interface
 
 ### Testing
