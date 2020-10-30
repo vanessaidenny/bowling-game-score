@@ -37,6 +37,8 @@ artifacts/
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml
+coveragereport/
+TestResults/
 
 # Visual Studio Code
 .vscode
