@@ -3,12 +3,12 @@ using Xunit;
 
 namespace BowlingGameScore.Tests
 {
-    public class UnitTest1
+    public class BowlingGameTests
     {
         [Fact]
         public void Test1()
         {
-
+            
         }
     }
 }

@@ -43,8 +43,9 @@ $ dotnet run
 &ensp;When all the pins are dropped using the two chances of a round
 * Open round:  
 &ensp;When the player does not drop all the pins in a round
-* Extra throw:  
-&ensp;If all the pins are dropped in the first chance of the 10th round
+* Extra balls in the tenth frame:  
+&ensp;One more ball when bowl a spare
+&ensp;Two more balls when bowl a strike
 
 ### Game Score Card
 
@@ -55,15 +56,15 @@ $ dotnet run
 * Without strike or spare:  
 &ensp;Points from the sum of the pins dropped
 * Strike:  
-&ensp;10 points plus the dropped pins on the two following chances
+&ensp;10 points plus the double of the dropped pins sum on the two following chances
 * Spare:  
-&ensp;10 points plus the dropped pins on the next chance
+&ensp;10 points plus the double of the dropped pins sum on the first next chance
 
 ### Documentation
 
-- [ ] Sum points with the basic game structure
-- [ ] Calculate strike and spare points
-- [ ] Calculate extra throw
+- [X] Sum points with the basic game structure
+- [X] Calculate strike and spare points
+- [X] Calculate extra throw
 - [ ] Describe and run test scenarios
 - [ ] Apply API to extend web interface
 
