@@ -29,7 +29,17 @@ namespace BowlingGameScore.Tests
             game.ThrowBall(3);
             Assert.Equal(16, game.CalculateScore());
         }
-        
+
+        [Fact]
+        public void CalculateScore_StrikeFollowedBy7_Score24()
+        {
+            game.ThrowBall(10); //strike
+            game.ThrowBall(3);
+            game.ThrowBall(4);
+            addListRound(16, 0);
+            Assert.Equal(24, game.CalculateScore());
+        }
+
         private void addListRound(int repeatThrow, int pins)
         {
             for (int i = 0; i < repeatThrow; i++)
