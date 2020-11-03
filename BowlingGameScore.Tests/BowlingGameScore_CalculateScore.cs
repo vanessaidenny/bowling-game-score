@@ -7,74 +7,63 @@ namespace BowlingGameScore.Tests
     public class BowlingGameScore_CalculateScore
     {
         BowlingGame game = new BowlingGame();
-        List<int[]> scoreBoard = new List<int[]>();
 
         [Fact]
-        public void CalculateScore_Input0_Return0()
+        public void CalculateScore_GutterGame_Score0()
         {
-            addListRound(0, 0, 10);
-            Assert.Equal(0, game.CalculateScore(scoreBoard));
-        }
-
-        [Fact]
-        public void CalculateScore_Input1_Return1()
-        {
-            addListRound(1, 1, 10);
-            Assert.Equal(20, game.CalculateScore(scoreBoard));
+            addListRound(0, 20);
+            Assert.Equal(0, game.CalculateScore());
         }
 
         [Fact]
-        public void CalculateScore_Input4P_6_Return19()
+        public void CalculateScore_AllOnesGame_Score20()
         {
-            addRound(4, 6);
-            addRound(3, 0);
-            addListRound(0, 0, 10);
-            Assert.Equal(19, game.CalculateScore(scoreBoard));
+            addListRound(1, 20);
+            Assert.Equal(20, game.CalculateScore());
         }
 
         [Fact]
-        public void CalculateScore_Input10_4_6_Return31()
+        public void CalculateScore_SpareFollowedBy3_Score16()
         {
-            addRound(10, 0);
-            addRound(3, 4);
-            addListRound(0, 0, 10);
-            Assert.Equal(31, game.CalculateScore(scoreBoard));
+            addSpare();
+            game.ThrowBall(3);
+            Assert.Equal(16, game.CalculateScore());
         }
 
         [Fact]
-        public void CalculateScore_Input12Strike_Return300()
-         {
-            addListRound(10, 0, 9);
-            addLastRoundWithExtra(10, 10, 10);
-            Assert.Equal(300, game.CalculateScore(scoreBoard));
-        }
-        
-        [Fact]
-        public void CalculateScore_InputRounds_Return32()
-         {
-            addRound(10,0);
-            addRound(5,5);
-            addRound(1,0);
-            addListRound(0,0,10);
-            Assert.Equal(42, game.CalculateScore(scoreBoard));
-        }
-        
-        private void addRound(int firstThrow, int secondThrow)
+        public void CalculateScore_StrikeFollowedBy7_Score24()
         {
-            scoreBoard.Add(new int[] {firstThrow, secondThrow});
+            addStrike();
+            game.ThrowBall(3);
+            game.ThrowBall(4);
+            addListRound(16, 0);
+            Assert.Equal(24, game.CalculateScore());
         }
 
-        private void addListRound(int firstThrow, int secondThrow, int stopAtRound)
+        [Fact]
+        public void CalculateScore_PerfectGame_Score300()
         {
-            while(scoreBoard.Count<stopAtRound)
+            addListRound(12, 10);
+            Assert.Equal(300, game.CalculateScore());
+        }
+
+        private void addListRound(int repeatThrow, int pins)
+        {
+            for (int i = 0; i < repeatThrow; i++)
             {
-                addRound(firstThrow,secondThrow);             
+                game.ThrowBall(pins);
             }
         }
 
-        private void addLastRoundWithExtra(int firstThrow, int secondThrow, int thirdThrow)
+        private void addSpare()
         {
-            scoreBoard.Add(new int[] {firstThrow, secondThrow, thirdThrow});
+                game.ThrowBall(5);
+                game.ThrowBall(5);
+        }
+
+        private void addStrike()
+        {
+            game.ThrowBall(10);
         }
     }
 }

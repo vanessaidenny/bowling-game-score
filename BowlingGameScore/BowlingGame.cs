@@ -1,137 +1,63 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace BowlingGameScore
 {
     public class BowlingGame
-    {        
-        public int ThrowBall(int pins)
+    {
+        private int[] rolls {get;set;} = new int[21];
+        private int currentRoll = 0;
+        
+        public void ThrowBall(int pins)
         {
-            Console.WriteLine("Insert number of dropped pins:");
-            int roll = Convert.ToInt32(Console.ReadLine());
-            while(true)
-            {
-                if(roll<=pins && roll>=0) return roll;
-                Console.WriteLine($"There are only {pins} pins left, how many to drop?:");
-                roll = Convert.ToInt32(Console.ReadLine());
-            }
-        }
-        public void PlayGame()
-        {
-            List<int[]> scoreBoard = new List<int[]>();
-            // [{10, 0}, {4, 6} ... {10, 5, 5}]
-
-            for (int i = 0; i < Config.MAXROUND; i++)
-            {
-                int pins = Config.MAXPIN;
-                int firstThrow = ThrowBall(pins);
-                pins-=firstThrow;
-                if (i != 9)
-                {
-                    if (pins==0) // strike
-                    {
-                        scoreBoard.Add(new int[] {10, 0});
-                    }
-                    else
-                    {
-                        scoreBoard.Add(new int[] {firstThrow, 0});
-                        int secondThrow = ThrowBall(pins);
-                        pins-=secondThrow;
-                        scoreBoard[i][1] = secondThrow;
-                    }
-                    Console.WriteLine($"End of round {i+1}");
-                }
-                else // last round
-                {
-                    if (pins==0) // strike!
-                    {
-                        scoreBoard.Add(new int[] {firstThrow, 0, 0});
-                        pins=Config.MAXPIN;
-                        int firstExtraThrow = ThrowBall(pins);
-                        pins-=firstExtraThrow;
-                        if (pins == 0){ // extra throw strike
-                            pins = Config.MAXPIN;                            
-                        }
-                        scoreBoard[i][1] = firstExtraThrow;
-                        int secondExtraThrow = ThrowBall(pins);
-                        pins -= secondExtraThrow;
-                        scoreBoard[i][2] = secondExtraThrow;                    
-                    }
-                    else{
-                        scoreBoard.Add(new int[] {firstThrow, 0, 0});
-                        int secondThrow = ThrowBall(pins);
-                        pins-=secondThrow;
-                        scoreBoard[i][1] = secondThrow;
-                        if (pins == 0){ // spare!
-                            pins = Config.MAXPIN;
-                            int extraThrow = ThrowBall(pins);
-                            scoreBoard[i][2] = extraThrow;
-                        }
-                    }
-                }
-            }
-            Console.WriteLine(CalculateScore(scoreBoard));
+            rolls[currentRoll++] = pins;
         }
 
-        public int CalculateScore(List<int[]> scoreBoard)
+        public int CalculateScore()
         {
-            int finalScore = 0;
-            for (int i = 0; i < Config.MAXROUND; i++)
+            int score = 0;
+            int roundIndex = 0;
+            for (int round = 0; round < 10; round++)
             {
-                bool isStrike = scoreBoard[i][0]==10;
-                int roundResult = 0;
-                if(i==9)
+                if(isStrike(roundIndex))
                 {
-                    roundResult = scoreBoard[i].Sum();
-                    finalScore += roundResult;
-                    try {
-                        Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}, {scoreBoard[i][2]}] = {roundResult}");
-                    }
-                    catch {
-                        Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}] = {roundResult}");
-                    }
+                    score += 10 + strikeBonus(roundIndex);
+                    roundIndex++;
                 }
-                else if (i==8)
+                else if (isSpare(roundIndex))
                 {
-                    bool isSpare = scoreBoard[i].Sum() == 10;
-                    if(isStrike || isSpare){
-                        if(scoreBoard[i+1][0] == 10){ // checks if last round was a strike
-                            roundResult = scoreBoard[i+1][0]*2+10;
-                            finalScore += roundResult;
-                        }
-                    }
-                    else{
-                        roundResult = scoreBoard[i].Sum();
-                        finalScore += roundResult;
-                    }
-                    Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}] = {roundResult}");
+                    score += 10 + spareBonus(roundIndex);
+                    roundIndex += 2;
                 }
                 else
                 {
-                    if(isStrike)
-                    {
-                        roundResult = scoreBoard[i+1].Sum()*2+10;
-                        finalScore += roundResult;
-                    }
-                    else
-                    {
-                        bool isSpare = scoreBoard[i].Sum()==10;
-                        if(isSpare)
-                        {
-                            roundResult = scoreBoard[i+1][0]*2+10;
-                            finalScore += roundResult;
-                        }
-                        else
-                        {
-                            roundResult = scoreBoard[i].Sum();
-                            finalScore += roundResult;
-                        } 
-                    }
-                    Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}] = {roundResult}");
+                    score += sumBallsInRound(roundIndex);
+                    roundIndex += 2;
                 }
             }
-            return finalScore;
+            return score;
+        }
+
+        private bool isStrike(int roundIndex)
+        {
+            return rolls[roundIndex] == 10;
+        }
+
+        private bool isSpare(int roundIndex)
+        {
+            return rolls[roundIndex] + rolls[roundIndex+1] == 10;
+        }
+
+        private int strikeBonus(int roundIndex)
+        {
+            return rolls[roundIndex+1] + rolls[roundIndex+2];
+        }
+
+        private int spareBonus(int roundIndex)
+        {
+            return rolls[roundIndex+2];
+        }
+
+        private int sumBallsInRound(int roundIndex)
+        {
+            return rolls[roundIndex] + rolls[roundIndex+1];
         }
     }
 }
