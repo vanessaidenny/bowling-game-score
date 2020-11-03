@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace BowlingGameScore
 {
@@ -8,7 +7,13 @@ namespace BowlingGameScore
         public static void Main(string[] args)
         {
             BowlingGame game = new BowlingGame();
-            game.PlayGame();
-        }
+
+            for (int i = 0; i < 20; i++)
+            {
+                game.ThrowBall(10);
+            }
+            int result = game.CalculateScore();
+            Console.WriteLine(result);
+        }            
     }
 }
