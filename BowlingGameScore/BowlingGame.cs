@@ -20,7 +20,7 @@ namespace BowlingGameScore
             int roundIndex = 0;
             for (int round = 0; round < Config.MAXROUND; round++)
             {
-                if (rolls[roundIndex] + rolls[roundIndex+1] == 10) //spare
+                if (isSpare(roundIndex))
                 {
                     score += 10 + rolls[roundIndex+2];
                     roundIndex += 2;
@@ -30,6 +30,11 @@ namespace BowlingGameScore
                 }
             }
             return score;
+        }
+
+        private bool isSpare(int roundIndex)
+        {
+            return rolls[roundIndex] + rolls[roundIndex+1] == 10;
         }
     }
 }
