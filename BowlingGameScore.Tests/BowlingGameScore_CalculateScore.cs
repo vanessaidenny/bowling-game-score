@@ -40,6 +40,13 @@ namespace BowlingGameScore.Tests
             Assert.Equal(24, game.CalculateScore());
         }
 
+        [Fact]
+        public void CalculateScore_PerfectGame_Score300()
+        {
+            addListRound(12, 10);
+            Assert.Equal(300, game.CalculateScore());
+        }
+
         private void addListRound(int repeatThrow, int pins)
         {
             for (int i = 0; i < repeatThrow; i++)
