@@ -25,8 +25,7 @@ namespace BowlingGameScore.Tests
         [Fact]
         public void CalculateScore_SpareFollowedBy3_Score16()
         {
-            game.ThrowBall(5);
-            game.ThrowBall(5); //spare
+            addSpare();
             game.ThrowBall(3);
             Assert.Equal(16, game.CalculateScore());
         }
@@ -37,6 +36,12 @@ namespace BowlingGameScore.Tests
             {
                 game.ThrowBall(pins);
             }
+        }
+
+        private void addSpare()
+        {
+                game.ThrowBall(5);
+                game.ThrowBall(5);
         }
     }
 }
