@@ -14,7 +14,7 @@ namespace BowlingGameScore
         {
             int score = 0;
             int roundIndex = 0;
-            for (int round = 0; round < Config.MAXROUND; round++)
+            for (int round = 0; round < 10; round++)
             {
                 if(isStrike(roundIndex))
                 {
