@@ -33,7 +33,7 @@ namespace BowlingGameScore.Tests
         [Fact]
         public void CalculateScore_StrikeFollowedBy7_Score24()
         {
-            game.ThrowBall(10); //strike
+            addStrike();
             game.ThrowBall(3);
             game.ThrowBall(4);
             addListRound(16, 0);
@@ -52,6 +52,11 @@ namespace BowlingGameScore.Tests
         {
                 game.ThrowBall(5);
                 game.ThrowBall(5);
+        }
+
+        private void addStrike()
+        {
+            game.ThrowBall(10);
         }
     }
 }
