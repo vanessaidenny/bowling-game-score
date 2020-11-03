@@ -85,7 +85,12 @@ namespace BowlingGameScore
                 {
                     roundResult = scoreBoard[i].Sum();
                     finalScore += roundResult;
-                    Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}, {scoreBoard[i][2]}] = {roundResult}");
+                    try {
+                        Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}, {scoreBoard[i][2]}] = {roundResult}");
+                    }
+                    catch {
+                        Console.WriteLine($"Result of round {i+1}: [{scoreBoard[i][0]}, {scoreBoard[i][1]}] = {roundResult}");
+                    }
                 }
                 else if (i==8)
                 {
