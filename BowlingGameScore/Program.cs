@@ -7,11 +7,13 @@ namespace BowlingGameScore
         public static void Main(string[] args)
         {
             BowlingGame game = new BowlingGame();
-
-            for (int i = 0; i < 20; i++)
+            do
             {
-                game.ThrowBall(10);
+                Console.WriteLine("Insert number of dropped pins:");
+                int droppedPins = Convert.ToInt32(Console.ReadLine());
+                game.ThrowBall(droppedPins);
             }
+            while (game.currentRoll<21);
             int result = game.CalculateScore();
             Console.WriteLine(result);
         }            

@@ -3,7 +3,7 @@ namespace BowlingGameScore
     public class BowlingGame
     {
         private int[] rolls {get;set;} = new int[21];
-        private int currentRoll = 0;
+        public int currentRoll = 0;
         
         public void ThrowBall(int pins)
         {
