@@ -20,19 +20,19 @@ namespace BowlingGameScore
             int roundIndex = 0;
             for (int round = 0; round < Config.MAXROUND; round++)
             {
-                if(rolls[roundIndex] == 10) //strike
+                if(rolls[roundIndex] == 10)
                 {
-                    score += 10 + rolls[roundIndex+1] + rolls[roundIndex+2];
+                    score += 10 + strikeBonus(roundIndex);
                     roundIndex++;
                 }
                 else if (isSpare(roundIndex))
                 {
-                    score += 10 + rolls[roundIndex+2];
+                    score += 10 + spareBonus(roundIndex);
                     roundIndex += 2;
                 }
                 else
                 {
-                    score += rolls[roundIndex] + rolls[roundIndex+1];
+                    score += sumBallsInRound(roundIndex);
                     roundIndex += 2;
                 }
             }
@@ -42,6 +42,21 @@ namespace BowlingGameScore
         private bool isSpare(int roundIndex)
         {
             return rolls[roundIndex] + rolls[roundIndex+1] == 10;
+        }
+
+        private int strikeBonus(int roundIndex)
+        {
+            return rolls[roundIndex+1] + rolls[roundIndex+2];
+        }
+
+        private int spareBonus(int roundIndex)
+        {
+            return rolls[roundIndex+2];
+        }
+
+        private int sumBallsInRound(int roundIndex)
+        {
+            return rolls[roundIndex] + rolls[roundIndex+1];
         }
     }
 }
