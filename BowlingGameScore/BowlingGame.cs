@@ -17,16 +17,16 @@ namespace BowlingGameScore
         public int CalculateScore()
         {
             int score = 0;
-            int i = 0;
+            int roundIndex = 0;
             for (int round = 0; round < Config.MAXROUND; round++)
             {
-                if (rolls[i] + rolls[i+1] == 10) //spare
+                if (rolls[roundIndex] + rolls[roundIndex+1] == 10) //spare
                 {
-                    score += 10 + rolls[i+2];
-                    i += 2;
+                    score += 10 + rolls[roundIndex+2];
+                    roundIndex += 2;
                 } else {
-                    score += rolls[i] + rolls[i+1];
-                    i += 2;
+                    score += rolls[roundIndex] + rolls[roundIndex+1];
+                    roundIndex += 2;
                 }
             }
             return score;
