@@ -17,9 +17,11 @@ namespace BowlingGameScore
         public int CalculateScore()
         {
             int score = 0;
-            for (int i = 0; i < rolls.Length; i++)
+            int i = 0;
+            for (int round = 0; round < Config.MAXROUND; round++)
             {
-                score += rolls[i];
+                score += rolls[i] + rolls[i+1];
+                i += 2;
             }
             return score;
         }
