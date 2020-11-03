@@ -9,17 +9,26 @@ namespace BowlingGameScore.Tests
         BowlingGame game = new BowlingGame();
 
         [Fact]
-        public void CalculateScore_GutterGame_ScoreZero()
+        public void CalculateScore_GutterGame_Score0()
         {
             addListRound(0, 20);
             Assert.Equal(0, game.CalculateScore());
         }
 
         [Fact]
-        public void CalculateScore_AllOnesGame_ScoreTwenty()
+        public void CalculateScore_AllOnesGame_Score20()
         {
             addListRound(1, 20);
             Assert.Equal(20, game.CalculateScore());
+        }
+
+        [Fact]
+        public void CalculateScore_SpareFollowedBy3_Score16()
+        {
+            game.ThrowBall(5);
+            game.ThrowBall(5); //spare
+            game.ThrowBall(3);
+            Assert.Equal(16, game.CalculateScore());
         }
         
         private void addListRound(int repeatThrow, int pins)
@@ -29,16 +38,5 @@ namespace BowlingGameScore.Tests
                 game.ThrowBall(pins);
             }
         }
-
-        
-        // private void addRound(int firstThrow, int secondThrow)
-        // {
-        //     scoreBoard.Add(new int[] {firstThrow, secondThrow});
-        // }
-
-        // private void addLastRoundWithExtra(int firstThrow, int secondThrow, int thirdThrow)
-        // {
-        //     scoreBoard.Add(new int[] {firstThrow, secondThrow, thirdThrow});
-        // }
     }
 }
