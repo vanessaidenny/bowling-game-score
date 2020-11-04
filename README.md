@@ -66,7 +66,7 @@ $ dotnet run
 - [X] Calculate strike and spare points
 - [X] Calculate extra throw
 - [X] Describe and run test scenarios
-- [ ] Refactoring
+- [X] Refactoring
 - [ ] Apply API to extend web interface
 
 ### Testing
