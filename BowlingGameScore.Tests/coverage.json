@@ -1,0 +1,183 @@
+{
+  "BowlingGameScore.dll": {
+    "C:\\Users\\VanessaDenny\\Documents\\VanessaDenny\\Git\\bowling-game-score\\BowlingGameScore\\BowlingGame.cs": {
+      "BowlingGameScore.BowlingGame": {
+        "System.Int32[] BowlingGameScore.BowlingGame::get_rolls()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Void BowlingGameScore.BowlingGame::ThrowBall(System.Int32)": {
+          "Lines": {
+            "9": 35,
+            "10": 35,
+            "11": 35
+          },
+          "Branches": []
+        },
+        "System.Int32 BowlingGameScore.BowlingGame::CalculateScore()": {
+          "Lines": {
+            "14": 5,
+            "15": 5,
+            "16": 5,
+            "17": 110,
+            "18": 50,
+            "19": 50,
+            "20": 11,
+            "21": 11,
+            "22": 11,
+            "23": 11,
+            "24": 39,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "30": 38,
+            "31": 38,
+            "32": 38,
+            "33": 38,
+            "34": 50,
+            "35": 5,
+            "36": 5
+          },
+          "Branches": [
+            {
+              "Line": 17,
+              "Offset": 106,
+              "EndOffset": 9,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 50
+            },
+            {
+              "Line": 19,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 11
+            },
+            {
+              "Line": 19,
+              "Offset": 19,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 39
+            },
+            {
+              "Line": 24,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 53,
+              "EndOffset": 76,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 38
+            },
+            {
+              "Line": 17,
+              "Offset": 106,
+              "EndOffset": 108,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Boolean BowlingGameScore.BowlingGame::isStrike(System.Int32)": {
+          "Lines": {
+            "39": 50,
+            "40": 50,
+            "41": 50
+          },
+          "Branches": []
+        },
+        "System.Boolean BowlingGameScore.BowlingGame::isSpare(System.Int32)": {
+          "Lines": {
+            "44": 39,
+            "45": 39,
+            "46": 39
+          },
+          "Branches": []
+        },
+        "System.Int32 BowlingGameScore.BowlingGame::strikeBonus(System.Int32)": {
+          "Lines": {
+            "49": 11,
+            "50": 11,
+            "51": 11
+          },
+          "Branches": []
+        },
+        "System.Int32 BowlingGameScore.BowlingGame::spareBonus(System.Int32)": {
+          "Lines": {
+            "54": 1,
+            "55": 1,
+            "56": 1
+          },
+          "Branches": []
+        },
+        "System.Int32 BowlingGameScore.BowlingGame::sumBallsInRound(System.Int32)": {
+          "Lines": {
+            "59": 38,
+            "60": 38,
+            "61": 38
+          },
+          "Branches": []
+        },
+        "System.Void BowlingGameScore.BowlingGame::.ctor()": {
+          "Lines": {
+            "6": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\VanessaDenny\\Documents\\VanessaDenny\\Git\\bowling-game-score\\BowlingGameScore\\Program.cs": {
+      "BowlingGameScore.Program": {
+        "System.Void BowlingGameScore.Program::Main(System.String[])": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 79,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 79,
+              "EndOffset": 81,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}
