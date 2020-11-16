@@ -19,13 +19,13 @@ Counter console to score points for bowling match.
 ## 🚀 Instructions for Use
 
 ```bash
-# clonar o repositório
+# clone the repository
 $ git clone https://github.com/vanessaidenny/bowling-game-score
 
-# entrar no diretório
+# enter the file
 $ cd bowling-game-score
 
-# iniciar o projeto
+# start the project
 $ dotnet run
 ```
 
